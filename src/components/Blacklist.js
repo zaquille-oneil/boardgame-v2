@@ -3,14 +3,15 @@ import '../App.css';
 import { Link } from 'react-router-dom'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-const FLAVOURS = [
-	{ label: 'Chocolate', value: 'chocolate' },
-	{ label: 'Vanilla', value: 'vanilla' },
-	{ label: 'Strawberry', value: 'strawberry' },
-	{ label: 'Caramel', value: 'caramel' },
-	{ label: 'Cookies and Cream', value: 'cookiescream' },
-	{ label: 'Peppermint', value: 'peppermint' },
-];
+const FLAVOURS = require('../bgdata.json')
+// [
+// 	{ label: 'Chocolate', value: 'chocolate' },
+// 	{ label: 'Vanilla', value: 'vanilla' },
+// 	{ label: 'Strawberry', value: 'strawberry' },
+// 	{ label: 'Caramel', value: 'caramel' },
+// 	{ label: 'Cookies and Cream', value: 'cookiescream' },
+// 	{ label: 'Peppermint', value: 'peppermint' },
+// ];
 
 // The Blacklist component matches one of two different routes
 // depending on the full pathname
@@ -41,7 +42,7 @@ class Blacklist extends Component {
                   multi
                   simpleValue
                   value={this.state.value}
-                  placeholder="Monopoly..."
+                  placeholder="Catan..."
                   options={this.state.options}
                   onChange={this.handleSelectChange} />
             </div>

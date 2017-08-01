@@ -7,25 +7,56 @@ import 'react-select/dist/react-select.css';
 // The Filters component matches one of two different routes
 // depending on the full pathname
 var options = {
-   rating : [{label : '5 stars', value : 5}],
-   duration : [{label : '1-2 hours', value : 5}],
-   ageGroup : [{label : '5-10 years', value : 1}],
-   playerLimit : [{label : '1-2 players', value : 1}]
+   rating : [
+      {label : '6+ stars', value : 1},
+      {label : '7+ stars', value : 2},
+      {label : '8+ stars', value : 3},
+   ],
+   duration : [
+      {label : 'very short', value : 1},
+      {label : 'short', value : 2},
+      {label : 'medium', value : 3},
+      {label : 'long', value : 4},
+      {label : 'very long', value : 5}
+   ],
+   ageGroup : [
+      {label : '1-5', value : 1},
+      {label : '5-10', value : 2},
+      {label : '11-20', value : 3},
+      {label : '21+', value : 4}
+   ],
+   playerLimit : [
+      {label : '1', value : 1},
+      {label : '2', value : 2},
+      {label : '3', value : 3},
+      {label : '4', value : 4},
+      {label : '5', value : 5},
+      {label : '6', value : 6},
+      {label : '7', value : 7},
+      {label : '8+', value : 8}
+   ],
+   weight : [
+      {label: 'simple', value: 1},
+      {label: 'interesting', value: 2},
+      {label: 'complex', value: 3}
+   ]
 }
 
 class Filters extends Component {
    constructor(props) {
       super(props)
       this.state = {
-         rating : 'rating',
-         duration : 'duration',
-         ageGroup : 'ageGroup',
-         playerLimit: 'playerLimit'
+         rating : '0',
+         duration : '0',
+         ageGroup : '0',
+         playerLimit: '0',
+         weight : '0'
       }
       this.updateRating = this.updateRating.bind(this)
       this.updateAgeGroup = this.updateAgeGroup.bind(this)
       this.updateDuration = this.updateDuration.bind(this)
       this.updatePlayerLimit = this.updatePlayerLimit.bind(this)
+      this.updateWeight = this.updateWeight.bind(this)
    }
 
    updateRating(newValue) {
@@ -44,6 +75,9 @@ class Filters extends Component {
       this.setState({playerLimit : newValue})
    }
 
+   updateWeight(newValue) {
+      this.setState({weight : newValue})
+   }
 
    render() {
       return (
@@ -52,7 +86,7 @@ class Filters extends Component {
                <p>Anything else specific?</p>
             <div style={{display:'flex',flexDirection: 'row', justifyContent: 'center', width: 'inherit'}}>
                <Select
-                  style={{maxWidth : '200px',textAlign:'left', marginRight: '10px'}}
+                  style={{maxWidth : '200px',textAlign:'left'}}
                   placeholder='rating'
                   options={options.rating}
                   simpleValue
@@ -70,7 +104,7 @@ class Filters extends Component {
                   autosize={false}
                />
                <Select
-                  style={{maxWidth : '200px',textAlign:'left', marginLeft: '10px'}}
+                  style={{maxWidth : '200px',textAlign:'left'}}
                   placeholder='age'
                   options={options.ageGroup}
                   simpleValue
@@ -78,8 +112,10 @@ class Filters extends Component {
                   onChange={this.updateAgeGroup}
                   autosize={false}
                />
+            </div>
+            <div style={{marginTop: '10px', display:'flex',flexDirection: 'row', justifyContent: 'center', width: 'inherit'}}>
                <Select
-                  style={{maxWidth : '200px',textAlign:'left', marginLeft: '10px'}}
+                  style={{maxWidth : '200px',textAlign:'left'}}
                   placeholder='players'
                   options={options.playerLimit}
                   simpleValue
@@ -87,8 +123,17 @@ class Filters extends Component {
                   onChange={this.updatePlayerLimit}
                   autosize={false}
                />
-               </div>
+               <Select
+                  style={{maxWidth : '200px',textAlign:'left'}}
+                  placeholder='weight'
+                  options={options.weight}
+                  simpleValue
+                  value={this.state.weight}
+                  onChange={this.updateWeight}
+                  autosize={false}
+               />
             </div>
+         </div>
             <div className="subpage-footer">
                <Link to="/categories"><button onClick={this.clickHandler}>back</button></Link>
                <Link to="/result"><button onClick={this.clickHandler}>next</button></Link>
