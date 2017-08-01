@@ -42,7 +42,7 @@ class Main extends Component {
    constructor(props) {
       super(props)
       this.state = {
-         blacklist : [],
+         blacklist : '',
          categories : {party : false, abstract : false, euro : false},
          filters : {
             rating : 0,
@@ -64,7 +64,7 @@ class Main extends Component {
 
    refresh() {
       this.setState({
-         blacklist : [],
+         blacklist : '',
          categories : {party : false, abstract : false, euro : false},
          filters : {
             rating : 0,
@@ -84,7 +84,7 @@ class Main extends Component {
       for (var i = 0; i < x.length; ++i) {
          // if you've played it before, remove
          //console.log(x[i].category)
-         if ((this.state.blacklist).includes(x[i].value)) {
+         if ((this.state.blacklist.split(',')).includes(x[i].value)) {
             x.splice(i,1)
             console.log('blacklisted')
             --i; continue;
@@ -142,17 +142,18 @@ class Main extends Component {
          }}
          // if weight is wrong
          if (this.state.filters.weight !== 0) {
-         if (Math.abs(this.state.filters.weight - x[i].weight[1]) > 1) {
+         if (Math.abs(this.state.filters.weight - x[i].weight) > 1) {
                x.splice(i,1)
                // console.log('weight off')
                --i; continue;
          }}
       }
+      //var copy = this.state.blacklist.slice();
       if (x.length !== 0) {
          var randGame = x[getRand(0,x.length-1)];
-         var copy = this.state.blacklist.slice();
-         copy.push(randGame.value)
-         this.setState({blacklist: copy})
+         //copy.push(randGame.value)
+         console.log(randGame)
+         this.setState({blacklist: this.state.blacklist + `,${randGame.value}`})
          return {data : randGame, numResults : x.length};
       }
       return {

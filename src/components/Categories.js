@@ -46,6 +46,7 @@ class Categories extends Component {
                   </button>
                </div>
            </div>
+           <div className="subpage-pad" style={{height:'40px', width:'1px'}}/>
            <div className="subpage-footer">
                <Link to="/blacklist"><button onClick={this.clickHandler}>back</button></Link>
                <Link to="/filters"><button onClick={this.clickHandler}>next</button></Link>

@@ -44,6 +44,8 @@ class Blacklist extends Component {
                   options={this.state.options}
                   onChange={this.handleSelectChange} />
             </div>
+            <div className="subpage-pad" style={{height:'40px', width:'1px'}}/>
+         
             <div className="subpage-footer">
                <Link to="/"><button onClick={this.clickHandler}>home</button></Link>
                <Link to="/categories"><button onClick={this.clickHandler}>next</button></Link>

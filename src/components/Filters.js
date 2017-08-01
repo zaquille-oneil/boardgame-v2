@@ -132,6 +132,9 @@ class Filters extends Component {
                   />
                </div>
             </div>
+
+            <div className="subpage-pad" style={{height:'40px', width:'1px'}}/>
+         
             <div className="subpage-footer">
                <Link to="/categories"><button onClick={this.clickHandler}>back</button></Link>
                <Link to="/result"><button onClick={this.clickHandler}>next</button></Link>
