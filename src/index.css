@@ -3,4 +3,6 @@ html,body, #root, #root>div {
   padding: 0;
   font-family: 'Varela Round', sans-serif;
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
 }
