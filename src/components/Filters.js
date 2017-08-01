@@ -82,56 +82,56 @@ class Filters extends Component {
          <div className="App-bodywrapper">
             <div className="subpage-main">
                <p>Anything else specific?</p>
-            <div style={{display:'flex',flexDirection: 'row', justifyContent: 'center', width: 'inherit'}}>
-               <Select
-                  style={{maxWidth : '200px',textAlign:'left'}}
-                  placeholder='rating'
-                  options={options.rating}
-                  simpleValue
-                  value={this.props.filters.rating}
-                  onChange={this.updateRating}
-                  autosize={false}
-               />
-               <Select
-                  style={{maxWidth : '200px',textAlign:'left'}}
-                  placeholder='length'
-                  options={options.duration}
-                  simpleValue
-                  value={this.props.filters.duration}
-                  onChange={this.updateDuration}
-                  autosize={false}
-               />
-               {/* <Select
-                  style={{maxWidth : '200px',textAlign:'left'}}
-                  placeholder='age'
-                  options={options.ageGroup}
-                  simpleValue
-                  value={this.props.filters.ageGroup}
-                  onChange={this.updateAgeGroup}
-                  autosize={false}
-               /> */}
+               <div style={{display:'flex',flexDirection: 'row', justifyContent: 'center', width: 'inherit'}}>
+                  <Select
+                     style={{maxWidth : '200px',textAlign:'left'}}
+                     placeholder='rating'
+                     options={options.rating}
+                     simpleValue
+                     value={this.props.filters.rating}
+                     onChange={this.updateRating}
+                     autosize={false}
+                  />
+                  <Select
+                     style={{maxWidth : '200px',textAlign:'left'}}
+                     placeholder='length'
+                     options={options.duration}
+                     simpleValue
+                     value={this.props.filters.duration}
+                     onChange={this.updateDuration}
+                     autosize={false}
+                  />
+                  {/* <Select
+                     style={{maxWidth : '200px',textAlign:'left'}}
+                     placeholder='age'
+                     options={options.ageGroup}
+                     simpleValue
+                     value={this.props.filters.ageGroup}
+                     onChange={this.updateAgeGroup}
+                     autosize={false}
+                  /> */}
+               </div>
+               <div style={{marginTop: '10px', display:'flex',flexDirection: 'row', justifyContent: 'center', width: 'inherit'}}>
+                  <Select
+                     style={{maxWidth : '200px',textAlign:'left'}}
+                     placeholder='players'
+                     options={options.playerLimit}
+                     simpleValue
+                     value={this.props.filters.playerLimit}
+                     onChange={this.updatePlayerLimit}
+                     autosize={false}
+                  />
+                  <Select
+                     style={{maxWidth : '200px',textAlign:'left'}}
+                     placeholder='weight'
+                     options={options.weight}
+                     simpleValue
+                     value={this.props.filters.weight}
+                     onChange={this.updateWeight}
+                     autosize={false}
+                  />
+               </div>
             </div>
-            <div style={{marginTop: '10px', display:'flex',flexDirection: 'row', justifyContent: 'center', width: 'inherit'}}>
-               <Select
-                  style={{maxWidth : '200px',textAlign:'left'}}
-                  placeholder='players'
-                  options={options.playerLimit}
-                  simpleValue
-                  value={this.props.filters.playerLimit}
-                  onChange={this.updatePlayerLimit}
-                  autosize={false}
-               />
-               <Select
-                  style={{maxWidth : '200px',textAlign:'left'}}
-                  placeholder='weight'
-                  options={options.weight}
-                  simpleValue
-                  value={this.props.filters.weight}
-                  onChange={this.updateWeight}
-                  autosize={false}
-               />
-            </div>
-         </div>
             <div className="subpage-footer">
                <Link to="/categories"><button onClick={this.clickHandler}>back</button></Link>
                <Link to="/result"><button onClick={this.clickHandler}>next</button></Link>

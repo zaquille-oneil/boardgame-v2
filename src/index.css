@@ -2,5 +2,5 @@ html,body, #root, #root>div {
   margin: 0;
   padding: 0;
   font-family: 'Varela Round', sans-serif;
-  height: 100%;
+  min-height: 100vh;
 }
