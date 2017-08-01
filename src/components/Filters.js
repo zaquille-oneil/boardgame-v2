@@ -8,23 +8,23 @@ import 'react-select/dist/react-select.css';
 // depending on the full pathname
 var options = {
    rating : [
-      {label : '6+ stars', value : 1},
-      {label : '7+ stars', value : 2},
-      {label : '8+ stars', value : 3},
+      {label : '7 stars', value : 7},
+      {label : '7.3 stars', value : 7.3},
+      {label : '7.5+ stars', value : 7.5},
    ],
    duration : [
-      {label : 'very short', value : 1},
-      {label : 'short', value : 2},
-      {label : 'medium', value : 3},
-      {label : 'long', value : 4},
-      {label : 'very long', value : 5}
+      {label : 'very short', value : 10},
+      {label : 'short', value : 20},
+      {label : 'medium', value : 40},
+      {label : 'long', value : 70},
+      {label : 'very long', value : 150}
    ],
-   ageGroup : [
-      {label : '1-5', value : 1},
-      {label : '5-10', value : 2},
-      {label : '11-20', value : 3},
-      {label : '21+', value : 4}
-   ],
+   // ageGroup : [
+   //    {label : '1-5', value : 5},
+   //    {label : '5-10', value : 10},
+   //    {label : '11-20', value : 20},
+   //    {label : '21+', value : 99}
+   // ],
    playerLimit : [
       {label : '1', value : 1},
       {label : '2', value : 2},
@@ -37,46 +37,44 @@ var options = {
    ],
    weight : [
       {label: 'simple', value: 1},
-      {label: 'interesting', value: 2},
-      {label: 'complex', value: 3}
+      {label: 'interesting', value: 2.5},
+      {label: 'complex', value: 4}
    ]
 }
 
 class Filters extends Component {
    constructor(props) {
       super(props)
-      this.state = {
-         rating : '0',
-         duration : '0',
-         ageGroup : '0',
-         playerLimit: '0',
-         weight : '0'
-      }
       this.updateRating = this.updateRating.bind(this)
-      this.updateAgeGroup = this.updateAgeGroup.bind(this)
+      //this.updateAgeGroup = this.updateAgeGroup.bind(this)
       this.updateDuration = this.updateDuration.bind(this)
       this.updatePlayerLimit = this.updatePlayerLimit.bind(this)
       this.updateWeight = this.updateWeight.bind(this)
    }
 
    updateRating(newValue) {
-      this.setState({rating : newValue})
+      var x = Object.assign({}, this.props.filters, {'rating': newValue})
+      this.props.changeParent('filters', x)
    }
 
-   updateAgeGroup(newValue) {
-      this.setState({ageGroup : newValue})
-   }
+   // updateAgeGroup(newValue) {
+   //    var x = Object.assign({}, this.props.filters, {'ageGroup': newValue})
+   //    this.props.changeParent('filters', x)
+   // }
 
    updateDuration(newValue) {
-      this.setState({duration : newValue})
+      var x = Object.assign({}, this.props.filters, {'duration': newValue})
+      this.props.changeParent('filters', x)
    }
 
    updatePlayerLimit(newValue) {
-      this.setState({playerLimit : newValue})
+      var x = Object.assign({}, this.props.filters, {'playerLimit': newValue})
+      this.props.changeParent('filters', x)
    }
 
    updateWeight(newValue) {
-      this.setState({weight : newValue})
+      var x = Object.assign({}, this.props.filters, {'weight': newValue})
+      this.props.changeParent('filters', x)
    }
 
    render() {
@@ -90,7 +88,7 @@ class Filters extends Component {
                   placeholder='rating'
                   options={options.rating}
                   simpleValue
-                  value={this.state.rating}
+                  value={this.props.filters.rating}
                   onChange={this.updateRating}
                   autosize={false}
                />
@@ -99,19 +97,19 @@ class Filters extends Component {
                   placeholder='length'
                   options={options.duration}
                   simpleValue
-                  value={this.state.duration}
+                  value={this.props.filters.duration}
                   onChange={this.updateDuration}
                   autosize={false}
                />
-               <Select
+               {/* <Select
                   style={{maxWidth : '200px',textAlign:'left'}}
                   placeholder='age'
                   options={options.ageGroup}
                   simpleValue
-                  value={this.state.ageGroup}
+                  value={this.props.filters.ageGroup}
                   onChange={this.updateAgeGroup}
                   autosize={false}
-               />
+               /> */}
             </div>
             <div style={{marginTop: '10px', display:'flex',flexDirection: 'row', justifyContent: 'center', width: 'inherit'}}>
                <Select
@@ -119,7 +117,7 @@ class Filters extends Component {
                   placeholder='players'
                   options={options.playerLimit}
                   simpleValue
-                  value={this.state.playerLimit}
+                  value={this.props.filters.playerLimit}
                   onChange={this.updatePlayerLimit}
                   autosize={false}
                />
@@ -128,7 +126,7 @@ class Filters extends Component {
                   placeholder='weight'
                   options={options.weight}
                   simpleValue
-                  value={this.state.weight}
+                  value={this.props.filters.weight}
                   onChange={this.updateWeight}
                   autosize={false}
                />

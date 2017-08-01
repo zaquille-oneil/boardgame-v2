@@ -21,15 +21,13 @@ class Blacklist extends Component {
    constructor(props) {
       super(props)
       this.state = {
-			options: FLAVOURS,
-			value: []
+			options: FLAVOURS
       }
       this.handleSelectChange = this.handleSelectChange.bind(this)
    }
 
    handleSelectChange(newValue) {
-      this.setState({ value : newValue});
-      console.log(this.state.value)
+      this.props.changeParent('blacklist',newValue);
    }
 
    render() {
@@ -41,7 +39,7 @@ class Blacklist extends Component {
                   style={{maxWidth: '280px', minWidth: '150px'}}
                   multi
                   simpleValue
-                  value={this.state.value}
+                  value={this.props.blacklist}
                   placeholder="Catan..."
                   options={this.state.options}
                   onChange={this.handleSelectChange} />
